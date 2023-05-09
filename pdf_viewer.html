@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <script>
+        function getPDFPath() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            return urlParams.get('pdf') || 'default.pdf';
+        }
+    </script>
+</head>
+<body>
+    <h1>PDF Viewer</h1>
+    <object data="" width="1000" height="1000" type="application/pdf" id="pdf-object">
+        <embed src="" type="application/pdf" id="pdf-embed">
+    </object>
+    <a href="index.html">Back to main page</a>
+
+    <script>
+        const pdfPath = getPDFPath();
+        const pdfObject = document.getElementById('pdf-object');
+        const pdfEmbed = document.getElementById('pdf-embed');
+        pdfObject.setAttribute('data', pdfPath);
+        pdfEmbed.setAttribute('src', pdfPath);
+    </script>
+</body>
+</html>
